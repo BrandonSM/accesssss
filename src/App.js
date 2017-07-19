@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Header } from './';
+import { Header } from './components';
+import { LoginForm } from './components/LoginForm.js';
 import firebase from 'firebase';
-const config = require('./../../config/firebase.config.js');
+const config = require('./../config/firebase.config.js');
 
 class App extends Component {
 
@@ -14,7 +15,7 @@ class App extends Component {
 		return(
 			<View>
 				<Header headerText="Authentication" />
-				<Text>Accessss</Text>
+				<LoginForm />
 			</View>
 		);
 	}
