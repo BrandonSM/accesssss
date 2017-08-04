@@ -2,13 +2,16 @@ import React from 'react';
 import { Text, TextInput, View } from 'react-native';
 
 const Input = ({ label, value, onChangeText }) => {
+
+	const {labelStyle, constainerStyle, inputStyle } = styles;
+
 	return (
-		<View>
-			<Text style={styles.labelStyle}>{label}</Text>
+		<View style={constainerStyle}>
+			<Text style={labelStyle}>{label}</Text>
 			<TextInput
 				value={value}
 				onChangeText={onChangeText}
-				style={styles.inputStyle}
+				style={inputStyle}
 			/>
 		</View>
 	);
@@ -21,18 +24,19 @@ const styles = {
 		paddingLeft: 5,
 		fontSize: 18,
 		lineHeight: 23,
-		flex:2,
+		flex:4,
 	},
 	labelStyle: {
 		fontSize: 18,
 		paddingLeft: 20,
+		lineHeight:23,
 		flex: 1,
 	},
 	constainerStyle: {
 		flexDirection: 'row',
 		flex: 1,
 		height: 40,
-		align: 'center',
+		alignItems: 'center',
 	},
 
 };
