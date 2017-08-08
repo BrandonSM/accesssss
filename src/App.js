@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import { Header } from './components';
 import { LoginForm } from './components/LoginForm.js';
 import firebase from 'firebase';
-const config = require('./../config/firebase.config.js');
 
 class App extends Component {
 
@@ -24,6 +23,15 @@ class App extends Component {
 const styles = {
 
 
+};
+
+const config = {
+  apiKey: "AIzaSyBSyJJ74Utpq0MmIZh4IxShEHaAvujvPrM",
+  authDomain: "accessss-53f6f.firebaseapp.com",
+  databaseURL: "https://accessss-53f6f.firebaseio.com",
+  projectId: "accessss-53f6f",
+  storageBucket: "accessss-53f6f.appspot.com",
+  messagingSenderId: "653908500368",
 };
 
 export default App;
