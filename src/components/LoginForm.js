@@ -4,33 +4,27 @@ import { Button, Card, CardSection, Input, Spinner } from './';
 import firebase from 'firebase';
 
 class LoginForm extends Component {
-
+	// sets the default state of the component
 	state = { email: '', password: '', error: '', loading: false };
-
 	// Helper method for handling when the user presses the 'Login' button.
-	// it clears any error message on the screen, and displays the loading spinner.
-	// It then tries to login to firebase with the email,password combination.
 	onButtonPress () {
-		console.log("PRESSING BUTTON");
+		// Adds the email and password values to state
 		const { email,password } = this.state;
-
+		// Clear the error state and change the loading state to true
 		this.setState({ error: '', loading: true });
-
-
+		// Tries logging in with email and password
 		firebase.auth().signInWithEmailAndPassword(email, password)
-
-			//Beacuse this is a function we are passing off to a promise, that is going to be invoked at some time in the future, and we don't know the context, 
-			// we have to bind the method to this.
+			// This is a function we are passing off to a promise, that is going to be invoked at some time in the future, and we don't know the context, 
+			// we have to bind the method to this. (Lecture 74)
 			.then(this.onLoginSuccess.bind(this))
 			.catch(() => {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
 					.then(this.onLoginSuccess.bind(this))
 					.catch(this.onLoginFailed.bind(this));
-			}); 
+		}); 
 	}
 
-	// Helper method that will do something when the login is successful.
-	// It clears out the email and password strings, sets the loading state to false, and clears the error
+	// Helper method that clears the state when the login is succesful
 	onLoginSuccess () {
 		this.setState({
 			email: '',
@@ -41,6 +35,7 @@ class LoginForm extends Component {
 
 	}
 
+	// Helper method that clears the loading state and displays Authentication Failed error
 	onLoginFailed () {
 		this.setState({
 			loading: false,
